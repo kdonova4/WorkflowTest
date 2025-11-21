@@ -1,0 +1,39 @@
+name: Run Tests
+
+on:
+  - push
+  - workflow_dispatch
+
+
+permissions:
+  checks: write
+  actions: read
+  contents: read
+
+jobs:
+  build:
+    name: AutoTest
+    runs-on: ubuntu-latest
+    steps:
+      - name: Display Java Version
+        run: java -version
+
+
+
+      - name: set up JDK 17
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'adopt'
+          java-version: '17'
+
+      - uses: actions/checkout@v4
+
+
+      - name: Display Maven Version
+        run: mvn -version
+
+      - name: Set up Maven
+        run: sudo apt-get install -y maven
+
+      - name: Build and run tests with Maven
+        run: mvn clean test
