@@ -211,7 +211,12 @@ class InterviewProblemsTest {
     @Test
     void isPalindromeNumber() {
         assertTrue(func.isPalindrome(121));
-        assertFalse(func.isPalindrome(1213));
+    }
+
+    @Test
+    void isNotPalindromeNumber() {
+        assertFalse(func.isPalindrome(1211));
+
     }
 
 }
